@@ -9,4 +9,9 @@ public class ProductTest {
 
     }
 
+    @Test(groups = {"purchase"})
+    public void removeElementShoppingCart(){}
+
+
+
 }

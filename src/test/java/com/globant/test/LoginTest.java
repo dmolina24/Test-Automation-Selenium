@@ -4,21 +4,28 @@ import com.globant.data.LoginData;
 import com.globant.pages.GridProductPage;
 import com.globant.pages.LoginPage;
 import org.testng.ITestContext;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest{
 
+    private LoginPage loginPage;
+
+    @BeforeMethod
+    private void getUrlSite(ITestContext context){
+        String urlSite = context.getCurrentXmlTest().getParameter("urlSite");
+        loginPage = getLoginPage(urlSite);
+    }
+
     @Test(
-            description="",
+            description="Validate login page UI text elements.",
             dataProviderClass = LoginData.class,
             dataProvider = "uiElements",
             groups = {"login"}
     )
-    public void loginTextElementsTest(ITestContext context, String expectedTitle, String placeHolderUserName, String placeHolderPass, String expectedTextButton){
-
-        String urlSite = context.getCurrentXmlTest().getParameter("urlSite");
-        LoginPage loginPage = getLoginPage(urlSite);
-
+    public void loginTextElementsTest(String expectedTitle, String placeHolderUserName, String placeHolderPass, String expectedTextButton){
         softAssert.assertTrue(loginPage.isTitleLoginCorrect(expectedTitle));
         softAssert.assertTrue(loginPage.isPlaceHolderUsernameCorrect(placeHolderUserName));
         softAssert.assertTrue(loginPage.isPlaceHolderPasswordCorrect(placeHolderPass));
@@ -27,10 +34,8 @@ public class LoginTest extends BaseTest{
     }
 
     @Test(description = "", dataProviderClass = LoginData.class, dataProvider = "validUsers", groups = {"login"})
-    public void loginWithValidUserTest(ITestContext context, String username, String password, String expectedTitle){
+    public void loginWithValidUserTest(String username, String password, String expectedTitle){
 
-        String urlSite = context.getCurrentXmlTest().getParameter("urlSite");
-        LoginPage loginPage = getLoginPage(urlSite);
         loginPage.setUserNameInput(username);
         loginPage.setPasswordInput(password);
 
@@ -40,10 +45,7 @@ public class LoginTest extends BaseTest{
     }
 
     @Test(description = "", dataProviderClass = LoginData.class, dataProvider = "invalidUsers", groups = {"login"})
-    public void loginWithInValidUserTest(ITestContext context, String username, String password, String expectedErrorMessage){
-
-        String urlSite = context.getCurrentXmlTest().getParameter("urlSite");
-        LoginPage loginPage = getLoginPage(urlSite);
+    public void loginWithInValidUserTest(String username, String password, String expectedErrorMessage){
 
         loginPage.setUserNameInput(username);
         loginPage.setPasswordInput(password);
