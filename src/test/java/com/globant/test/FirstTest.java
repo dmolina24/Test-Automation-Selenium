@@ -1,6 +1,4 @@
 package com.globant.test;
-import com.globant.pages.HomePage;
-import com.globant.pages.SearchResult;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

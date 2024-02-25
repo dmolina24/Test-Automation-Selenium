@@ -1,27 +1,33 @@
 package com.globant.test;
 
+import com.globant.pages.GridProductPage;
 import com.globant.pages.LoginPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
 public class BaseTest {
 
-    WebDriver driver = null;
-    SoftAssert softAssert = null;
+    protected WebDriver driver = null;
+    protected SoftAssert softAssert = null;
+
+    static LoginPage loginPage;
+    static GridProductPage gridProductPage;
 
     @BeforeClass
     static void setup(){
         WebDriverManager.chromedriver().setup();
     }
 
-    @BeforeTest
-    public void beforeText(){
+    @BeforeGroups("login")
+    public void initDriver(){
         driver = new ChromeDriver();
+    }
+
+    @BeforeMethod(groups = {"login", "purchase-product"})
+    public void initAssert(){
         softAssert = new SoftAssert();
     }
 

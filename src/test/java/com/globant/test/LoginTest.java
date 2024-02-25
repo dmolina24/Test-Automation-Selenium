@@ -1,20 +1,13 @@
 package com.globant.test;
-
 import com.globant.data.LoginData;
-import com.globant.pages.GridProductPage;
-import com.globant.pages.LoginPage;
 import org.testng.ITestContext;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest{
 
-    private LoginPage loginPage;
-
-    @BeforeMethod
-    private void getUrlSite(ITestContext context){
+    @BeforeMethod(groups = "login")
+    protected void getUrlSite(ITestContext context){
         String urlSite = context.getCurrentXmlTest().getParameter("urlSite");
         loginPage = getLoginPage(urlSite);
     }
@@ -39,7 +32,8 @@ public class LoginTest extends BaseTest{
         loginPage.setUserNameInput(username);
         loginPage.setPasswordInput(password);
 
-        GridProductPage gridProductPage = loginPage.clickLoginBtn();
+        gridProductPage = loginPage.clickLoginBtn();
+
         softAssert.assertTrue(gridProductPage.isProductTitleCorrect(expectedTitle));
         softAssert.assertAll();
     }

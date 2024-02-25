@@ -34,6 +34,12 @@ public class GridProductPage  extends BasePage{
         return productList.get(index);
     }
 
+    public CartPage clickOnCart(){
+        isElementDisplayed(this.shoppingCart);
+        this.shoppingCart.click();
+        return new CartPage(driver);
+    }
+
     public void addRandomProductToCart() {
         WebElement randomProduct = selectRandomProduct();
         WebElement addToCartButton = randomProduct.findElement(By.className("btn_inventory"));
