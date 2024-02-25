@@ -1,19 +1,23 @@
 package com.globant.test;
 
-import com.globant.pages.HomePage;
 import com.globant.pages.LoginPage;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
 
 public class BaseTest {
 
-    HomePage homePage;
     WebDriver driver = null;
     SoftAssert softAssert = null;
+
+    @BeforeClass
+    static void setup(){
+        WebDriverManager.chromedriver().setup();
+    }
 
     @BeforeTest
     public void beforeText(){
@@ -27,12 +31,7 @@ public class BaseTest {
         driver.close();
     }
 
-
     public LoginPage getLoginPage(String urlWebSite){
         return new LoginPage(driver, urlWebSite);
-    }
-
-    public HomePage getHomePage(){
-        return new HomePage(driver,"https://www.saucedemo.com/");
     }
 }

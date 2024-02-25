@@ -11,7 +11,6 @@ import java.time.Duration;
 public class BasePage {
     WebDriver driver;
 
-
     public BasePage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -22,4 +21,5 @@ public class BasePage {
         wait.until(ExpectedConditions.visibilityOf(element));
         return element.isDisplayed();
     }
+
 }

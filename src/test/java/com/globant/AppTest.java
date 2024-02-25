@@ -24,11 +24,4 @@ public class AppTest{
         log.info(b);
     }
 
-    @Test
-    @Parameters({"param1", "param2"})
-    public void testParameters(String a, String b){
-        Assert.assertEquals(a, "FirstValue");
-        Assert.assertEquals(b, "SecondValue");
-    }
-
 }

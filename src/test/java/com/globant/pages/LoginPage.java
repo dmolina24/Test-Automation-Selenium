@@ -42,9 +42,9 @@ public class LoginPage extends BasePage {
         return this.passwordInput.getAttribute("placeholder").equals(expectedValue);
     }
 
-    public String getErrorMessage(){
+    public boolean isErrorMessageCorrect(String errorMessage){
         this.isElementDisplayed(this.errorMessage);
-        return this.errorMessage.getText();
+        return this.errorMessage.getText().equals(errorMessage);
     }
 
     public void setUserNameInput(String userName){
@@ -53,6 +53,12 @@ public class LoginPage extends BasePage {
 
     public void setPasswordInput(String password){
         this.passwordInput.sendKeys(password);
+    }
+
+    public GridProductPage clickLoginBtn(){
+        this.isElementDisplayed(this.loginBtn);
+        this.loginBtn.click();
+        return new GridProductPage(driver);
     }
 
     public LoginPage(WebDriver driver, String url){

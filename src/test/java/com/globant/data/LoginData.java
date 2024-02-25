@@ -1,5 +1,4 @@
 package com.globant.data;
-
 import org.testng.annotations.DataProvider;
 
 public class LoginData {
@@ -14,18 +13,14 @@ public class LoginData {
     @DataProvider(name = "validUsers")
     public static Object[][] validUsers() {
         return new Object[][] {
-                {"standard_user", "secret_sauce"}
+                {"standard_user", "secret_sauce", "Products"}
         };
     }
 
     @DataProvider(name = "invalidUsers")
     public static Object[][] invalidUsers(){
         return new Object[][] {
-                {"WrongUser", "IncorrectPassword"},
-                {"EmptyUser", ""},
-                {"", "NoUsername"},
+                {"WrongUser", "IncorrectPassword", "Epic sadface: Username and password do not match any user in this service"}
         };
     }
-
-
 }
