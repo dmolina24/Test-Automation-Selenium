@@ -1,5 +1,6 @@
 package com.globant.pages;
 
+import com.globant.pages.CheckOut.CheckOutInformationPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -34,10 +35,10 @@ public class CartPage extends BasePage{
         return this.cartDescriptionLabel.getText();
     }
 
-    public CheckOutPage clickCheckOutBtn(){
+    public CheckOutInformationPage clickCheckOutBtn(){
         isElementDisplayed(this.checkoutBtn);
         this.checkoutBtn.click();
-        return new CheckOutPage(driver);
+        return new CheckOutInformationPage(driver);
     }
 
     public CartPage(WebDriver driver){

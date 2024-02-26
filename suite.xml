@@ -1,11 +1,24 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite" verbose="1">
-    <test name="AppTestSuite">
+    <test name="TestCaseOne">
         <parameter name="urlSite" value="https://www.saucedemo.com/" />
         <groups>
             <run>
                 <include name="login"/>
                 <include name="purchase-product"/>
+                <include name="remove-elements"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.globant.test.LoginTest"/>
+            <class name="com.globant.test.ProductTest"/>
+        </classes>
+    </test>
+    <test name="TestCaseTwo">
+        <parameter name="urlSite" value="https://www.saucedemo.com/" />
+        <groups>
+            <run>
+                <include name="login"/>
                 <include name="remove-elements"/>
             </run>
         </groups>

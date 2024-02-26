@@ -1,7 +1,8 @@
 package com.globant.test;
 
 import com.globant.pages.CartPage;
-import com.globant.pages.CheckOutPage;
+import com.globant.pages.CheckOut.CheckOutInformationPage;
+import com.globant.pages.CheckOut.CheckOutOverviewPage;
 import org.testng.annotations.Test;
 
 public class ProductTest extends BaseTest {
@@ -16,15 +17,19 @@ public class ProductTest extends BaseTest {
         softAssert.assertEquals(cartPage.getQuantityLabel(), "QTY" );
         softAssert.assertEquals(cartPage.getDescLabel(), "Description");
 
-        CheckOutPage checkOutPage = cartPage.clickCheckOutBtn();
+        CheckOutInformationPage checkOutInfoPage = cartPage.clickCheckOutBtn();
 
-        softAssert.assertEquals(checkOutPage.getTitle(), "Checkout: Your Information");
+        softAssert.assertEquals(checkOutInfoPage.getTitle(), "Checkout: Your Information");
 
-        checkOutPage.setFirstName("Generic Name");
-        checkOutPage.setLastNameInput("Generic Last Name");
-        checkOutPage.setPostalCodeInput("Generic Code");
+        checkOutInfoPage.setFirstName("Generic Name");
+        checkOutInfoPage.setLastNameInput("Generic Last Name");
+        checkOutInfoPage.setPostalCodeInput("Generic Code");
 
-        checkOutPage.clickContinueBtn();
+        CheckOutOverviewPage checkOutOverviewPage= checkOutInfoPage.clickContinueBtn();
+
+        checkOutOverviewPage.printText();
+        checkOutOverviewPage.clickFinishBtn();
+
 
         softAssert.assertAll();
     }

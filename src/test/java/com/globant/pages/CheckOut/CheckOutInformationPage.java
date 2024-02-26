@@ -1,11 +1,12 @@
-package com.globant.pages;
+package com.globant.pages.CheckOut;
 
+import com.globant.pages.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class CheckOutPage extends BasePage{
+public class CheckOutInformationPage extends BasePage {
 
     @FindBy(className = "title")
     private WebElement title;
@@ -42,12 +43,13 @@ public class CheckOutPage extends BasePage{
         this.postalCodeInput.sendKeys(code);
     }
 
-    public void clickContinueBtn(){
+    public CheckOutOverviewPage clickContinueBtn(){
         isElementDisplayed(this.continueBtn);
         this.continueBtn.click();
+        return new CheckOutOverviewPage(driver);
     }
 
-    public CheckOutPage(WebDriver driver){
+    public CheckOutInformationPage(WebDriver driver){
         super(driver);
         PageFactory.initElements(driver, this);
     }

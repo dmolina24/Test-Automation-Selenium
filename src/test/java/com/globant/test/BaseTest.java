@@ -37,6 +37,11 @@ public class BaseTest {
         driver.close();
     }
 
+    @AfterGroups(groups = {"purchase-product"})
+    void closeDriver(){
+        driver.quit();
+    }
+
     public LoginPage getLoginPage(String urlWebSite){
         return new LoginPage(driver, urlWebSite);
     }
