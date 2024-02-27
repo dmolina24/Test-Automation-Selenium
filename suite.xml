@@ -36,7 +36,7 @@
         </groups>
         <classes>
             <class name="com.globant.test.LoginTest"/>
-            <class name="com.globant.test.ProductTest"/>
+            <class name="com.globant.test.LogoutTest"/>
         </classes>
     </test>
 </suite>

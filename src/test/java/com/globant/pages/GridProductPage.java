@@ -26,6 +26,9 @@ public class GridProductPage  extends BasePage{
     @FindBy(id = "react-burger-menu-btn")
     private WebElement burgerMenu;
 
+    @FindBy(id="logout_sidebar_link")
+    private WebElement linkLogout;
+
     public boolean isProductTitleCorrect(String expectedTitle){
         isElementDisplayed(this.title);
         return this.title.getText().equals(expectedTitle);
@@ -55,6 +58,11 @@ public class GridProductPage  extends BasePage{
     public void clickOnBurgerMenu(){
         isElementDisplayed(this.burgerMenu);
         this.burgerMenu.click();
+    }
+
+    public void clickOnLogoutLink(){
+        isElementDisplayed(this.linkLogout);
+        this.linkLogout.click();
     }
 
     public void addRandomProductToCart() {

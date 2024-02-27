@@ -31,15 +31,9 @@ public class BaseTest {
         softAssert = new SoftAssert();
     }
 
-    @AfterTest
-    void tearDown(){
+    @AfterTest(groups = {"purchase-product", "remove-elements", "logout"})
+    void tearDown() {
         driver.quit();
-        //driver.close();
-    }
-
-    @AfterGroups(groups = {"purchase-product"})
-    void closeDriver(){
-
     }
 
     public LoginPage getLoginPage(String urlWebSite){

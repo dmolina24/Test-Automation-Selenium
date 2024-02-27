@@ -49,10 +49,5 @@ public class LoginTest extends BaseTest{
         softAssert.assertAll();
     }
 
-    @Test(groups = {"logout"})
-    public void validLogout(){
-        //gridProductPage.clickOnBurgerMenu();
-    }
-
 
 }
