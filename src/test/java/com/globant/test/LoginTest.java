@@ -48,4 +48,11 @@ public class LoginTest extends BaseTest{
         softAssert.assertTrue(loginPage.isErrorMessageCorrect(expectedErrorMessage));
         softAssert.assertAll();
     }
+
+    @Test(groups = {"logout"})
+    public void validLogout(){
+        //gridProductPage.clickOnBurgerMenu();
+    }
+
+
 }

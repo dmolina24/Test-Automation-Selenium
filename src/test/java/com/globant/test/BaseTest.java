@@ -26,20 +26,20 @@ public class BaseTest {
         driver = new ChromeDriver();
     }
 
-    @BeforeMethod(groups = {"login", "purchase-product"})
+    @BeforeMethod(groups = {"login", "purchase-product", "logout"})
     public void initAssert(){
         softAssert = new SoftAssert();
     }
 
     @AfterTest
     void tearDown(){
-        //driver.quit();
-        driver.close();
+        driver.quit();
+        //driver.close();
     }
 
     @AfterGroups(groups = {"purchase-product"})
     void closeDriver(){
-        driver.quit();
+
     }
 
     public LoginPage getLoginPage(String urlWebSite){

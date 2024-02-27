@@ -30,13 +30,20 @@ public class ProductTest extends BaseTest {
         checkOutOverviewPage.printText();
         checkOutOverviewPage.clickFinishBtn();
 
-
         softAssert.assertAll();
     }
 
     @Test(groups = {"remove-elements"}, dependsOnGroups = {"login"})
     public void removeElementShoppingCart(){
-        System.out.println("Purchase Test - 2");
+
+        gridProductPage.addProductToCart(3);
+        CartPage cartPage = gridProductPage.clickOnCart();
+
+        softAssert.assertEquals(cartPage.getSizeCartList(), 3);
+        cartPage.emptyCart();
+        softAssert.assertEquals(cartPage.getSizeCartList(), 0);
+
+        softAssert.assertAll();
     }
 
 }
