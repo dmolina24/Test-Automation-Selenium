@@ -1,12 +1,13 @@
 package com.globant.pages.CheckOut;
 
 import com.globant.pages.BasePage;
+import com.globant.pages.HeaderPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class CheckOutOverviewPage extends BasePage {
+public class CheckOutOverviewPage extends HeaderPage {
 
     @FindBy(className = "title")
     private WebElement title;

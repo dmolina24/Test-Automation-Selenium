@@ -27,14 +27,14 @@ public class LoginTest extends BaseTest{
     }
 
     @Test(description = "", dataProviderClass = LoginData.class, dataProvider = "validUsers", groups = {"login"})
-    public void loginWithValidUserTest(String username, String password, String expectedTitle){
+    public void loginWithValidUserTest(String username, String password, String expectedSubTitle){
 
         loginPage.setUserNameInput(username);
         loginPage.setPasswordInput(password);
 
         gridProductPage = loginPage.clickLoginBtn();
 
-        softAssert.assertTrue(gridProductPage.isProductTitleCorrect(expectedTitle));
+        softAssert.assertTrue(gridProductPage.isProductSubTitleCorrect(expectedSubTitle));
         softAssert.assertAll();
     }
 

@@ -13,7 +13,7 @@ public class ProductTest extends BaseTest {
         gridProductPage.addRandomProductToCart();
         CartPage cartPage = gridProductPage.clickOnCart();
 
-        softAssert.assertEquals(cartPage.getTitle(),"Your Cart");
+        softAssert.assertEquals(cartPage.getSubTitle(),"Your Cart");
         softAssert.assertEquals(cartPage.getQuantityLabel(), "QTY" );
         softAssert.assertEquals(cartPage.getDescLabel(), "Description");
 

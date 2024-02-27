@@ -9,29 +9,16 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 import java.util.Random;
 
-public class GridProductPage  extends BasePage{
-
-    @FindBy(className = "shopping_cart_link")
-    private WebElement shoppingCart;
-
-    @FindBy(className = "title")
-    private WebElement title;
-
+public class GridProductPage extends HeaderPage{
     @FindBy(className = "inventory_item")
     private List<WebElement> productList;
 
     @FindBy(className = "btn_inventory")
     private List<WebElement> addToCartButtons;
 
-    @FindBy(id = "react-burger-menu-btn")
-    private WebElement burgerMenu;
-
-    @FindBy(id="logout_sidebar_link")
-    private WebElement linkLogout;
-
-    public boolean isProductTitleCorrect(String expectedTitle){
+    public boolean isProductSubTitleCorrect(String expectedSubTitle){
         isElementDisplayed(this.title);
-        return this.title.getText().equals(expectedTitle);
+        return getSubTitle().equals(expectedSubTitle);
     }
 
     public WebElement selectRandomProduct() {
@@ -46,23 +33,12 @@ public class GridProductPage  extends BasePage{
                 productList.get(i).findElement(By.className("btn_inventory")).click();
             }
         }
-
     }
 
     public CartPage clickOnCart(){
         isElementDisplayed(this.shoppingCart);
         this.shoppingCart.click();
         return new CartPage(driver);
-    }
-
-    public void clickOnBurgerMenu(){
-        isElementDisplayed(this.burgerMenu);
-        this.burgerMenu.click();
-    }
-
-    public void clickOnLogoutLink(){
-        isElementDisplayed(this.linkLogout);
-        this.linkLogout.click();
     }
 
     public void addRandomProductToCart() {

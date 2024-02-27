@@ -9,11 +9,8 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class CartPage extends BasePage{
-
-    @FindBy(className = "title")
-    private WebElement title;
-
+public class CartPage extends HeaderPage{
+    
     @FindBy(className = "cart_quantity_label")
     private WebElement cartQuantityLabel;
 
@@ -25,11 +22,6 @@ public class CartPage extends BasePage{
 
     @FindBy(id = "checkout")
     private WebElement checkoutBtn;
-
-    public String getTitle(){
-        isElementDisplayed(this.title);
-        return this.title.getText();
-    }
 
     public String getQuantityLabel(){
         isElementDisplayed(this.cartQuantityLabel);
@@ -56,8 +48,6 @@ public class CartPage extends BasePage{
         this.checkoutBtn.click();
         return new CheckOutInformationPage(driver);
     }
-
-
 
     public CartPage(WebDriver driver){
         super(driver);
