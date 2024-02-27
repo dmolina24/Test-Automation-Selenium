@@ -7,6 +7,10 @@ public class LogoutTest extends BaseTest{
     public void validateLogout(){
         gridProductPage.clickOnBurgerMenu();
         gridProductPage.clickOnLogoutLink();
+
+        softAssert.assertTrue(loginPage.isLoginBtnTextCorrect("Login"));
+        softAssert.assertTrue(loginPage.isTitleLoginCorrect("Swag Labs"));
+
         softAssert.assertAll();
     }
 }
