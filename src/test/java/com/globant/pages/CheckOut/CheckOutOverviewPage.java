@@ -1,6 +1,4 @@
 package com.globant.pages.CheckOut;
-
-import com.globant.pages.BasePage;
 import com.globant.pages.HeaderPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,25 +13,37 @@ public class CheckOutOverviewPage extends HeaderPage {
     @FindBy(css = ".summary_info_label:nth-of-type(1)")
     private WebElement paymentInfoLabel;
 
-    @FindBy(css = ".summary_info_label:nth-of-type(1)")
-    private WebElement priceTotalLabel;
-
-    @FindBy(css = ".summary_info_label:nth-of-type(1)")
+    @FindBy(css = ".summary_info_label:nth-of-type(3)")
     private WebElement shippingInfo;
+
+    @FindBy(css = ".summary_info_label:nth-of-type(5)")
+    private WebElement priceTotalLabel;
 
     @FindBy(id = "finish")
     private WebElement finishBtn;
 
-    public void clickFinishBtn(){
+    public CheckOutCompletePage clickFinishBtn(){
         isElementDisplayed(this.finishBtn);
         this.finishBtn.click();
+
+        return new CheckOutCompletePage(driver);
     }
 
-    public void printText(){
-        System.out.println("paymentInfoLabel: "+  paymentInfoLabel.getText());
-        System.out.println(priceTotalLabel.getText());
-        System.out.println(shippingInfo.getText());
+    public String getTextPaymentInfoLabel(){
+        isElementDisplayed(paymentInfoLabel);
+        return paymentInfoLabel.getText();
     }
+
+    public String getTextShippingInfo(){
+        isElementDisplayed(shippingInfo);
+        return shippingInfo.getText();
+    }
+
+    public String getTextPriceTotalLabel(){
+        isElementDisplayed(priceTotalLabel);
+        return priceTotalLabel.getText();
+    }
+
 
     public CheckOutOverviewPage(WebDriver driver){
         super(driver);
