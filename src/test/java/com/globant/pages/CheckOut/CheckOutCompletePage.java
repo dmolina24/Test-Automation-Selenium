@@ -9,9 +9,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class CheckOutCompletePage extends HeaderPage {
 
-    @FindBy(id = "title")
-    private WebElement title;
-
     @FindBy(className = "pony_express")
     private WebElement iconCheck;
 
@@ -23,6 +20,21 @@ public class CheckOutCompletePage extends HeaderPage {
 
     @FindBy(id = "#back-to-products")
     private WebElement backHomeBtn;
+
+    public boolean isIconCheckDisplayed(){
+        isElementDisplayed(iconCheck);
+        return iconCheck.isDisplayed();
+    }
+
+    public String getTextCompleteTitle(){
+        isElementDisplayed(completeTitle);
+        return completeTitle.getText();
+    }
+
+    public String getTextCompleteText(){
+        isElementDisplayed(completeText);
+        return completeText.getText();
+    }
 
     public CheckOutCompletePage(WebDriver driver){
         super(driver);
