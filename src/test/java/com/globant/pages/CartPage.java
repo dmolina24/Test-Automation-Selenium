@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class CartPage extends HeaderPage{
-    
+
     @FindBy(className = "cart_quantity_label")
     private WebElement cartQuantityLabel;
 

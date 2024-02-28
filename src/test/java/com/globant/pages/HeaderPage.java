@@ -39,6 +39,20 @@ public class HeaderPage extends BasePage {
         return subTitle.getText();
     }
 
+    public String getTextLinkAllItems(){
+        isElementDisplayed(linkAllItems);
+        return linkAllItems.getText();
+    }
+
+    public String getTextLinkAbout(){
+        isElementDisplayed(linkAbout);
+        return linkAbout.getText();
+    }
+
+    public String getTextLinkLogout(){
+        isElementDisplayed(linkLogout);
+        return linkLogout.getText();
+    }
     public void clickOnLogoutLink(){
         isElementDisplayed(this.linkLogout);
         this.linkLogout.click();
@@ -47,6 +61,16 @@ public class HeaderPage extends BasePage {
     public void clickOnBurgerMenu(){
         isElementDisplayed(this.burgerMenu);
         this.burgerMenu.click();
+    }
+
+    public boolean isCartDisplayed(){
+        isElementDisplayed(this.shoppingCart);
+        return this.shoppingCart.isDisplayed();
+    }
+
+    public boolean isBurgerMenuDisplayed(){
+        isElementDisplayed(this.burgerMenu);
+        return this.burgerMenu.isDisplayed();
     }
 
     public HeaderPage(WebDriver driver) {

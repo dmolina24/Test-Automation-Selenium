@@ -19,11 +19,21 @@ public class ProductTest extends BaseTest {
 
         CheckOutInformationPage checkOutInfoPage = cartPage.clickCheckOutBtn();
 
-        softAssert.assertEquals(checkOutInfoPage.getTitle(), "Checkout: Your Information");
+        softAssert.assertEquals(checkOutInfoPage.getTitle(), "Swag Labs");
+        softAssert.assertEquals(checkOutInfoPage.getSubTitle(), "Checkout: Your Information");
+        softAssert.assertTrue(checkOutInfoPage.isCartDisplayed());
+        softAssert.assertTrue(checkOutInfoPage.isBurgerMenuDisplayed());
+
+        checkOutInfoPage.clickOnBurgerMenu();
+
+        softAssert.assertEquals(checkOutInfoPage.getTextLinkAllItems(), "All Items");
+        softAssert.assertEquals(checkOutInfoPage.getTextLinkAbout(), "About");
+        softAssert.assertEquals(checkOutInfoPage.getTextLinkLogout(), "Logout");
 
         checkOutInfoPage.setFirstName("Generic Name");
         checkOutInfoPage.setLastNameInput("Generic Last Name");
         checkOutInfoPage.setPostalCodeInput("Generic Code");
+
 
         CheckOutOverviewPage checkOutOverviewPage= checkOutInfoPage.clickContinueBtn();
 
@@ -41,7 +51,17 @@ public class ProductTest extends BaseTest {
 
         softAssert.assertEquals(cartPage.getSizeCartList(), 3);
         cartPage.emptyCart();
+
         softAssert.assertEquals(cartPage.getSizeCartList(), 0);
+        softAssert.assertEquals(cartPage.getTitle(), "Swag Labs");
+        softAssert.assertEquals(cartPage.getSubTitle(), "Your Cart");
+        softAssert.assertTrue(cartPage.isBurgerMenuDisplayed());
+
+        cartPage.clickOnBurgerMenu();
+
+        softAssert.assertEquals(cartPage.getTextLinkAllItems(), "All Items");
+        softAssert.assertEquals(cartPage.getTextLinkAbout(), "About");
+        softAssert.assertEquals(cartPage.getTextLinkLogout(), "Logout");
 
         softAssert.assertAll();
     }

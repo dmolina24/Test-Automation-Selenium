@@ -9,9 +9,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class CheckOutInformationPage extends HeaderPage {
 
-    @FindBy(className = "title")
-    private WebElement title;
-
     @FindBy(id = "first-name")
     private WebElement firstNameInput;
 
@@ -23,11 +20,6 @@ public class CheckOutInformationPage extends HeaderPage {
 
     @FindBy(id = "continue")
     private WebElement continueBtn;
-
-    public String getTitle(){
-        isElementDisplayed(this.title);
-        return this.title.getText();
-    }
 
     public void setFirstName(String name){
         isElementDisplayed(this.firstNameInput);
